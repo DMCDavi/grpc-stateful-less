@@ -14,13 +14,13 @@ class GreeterStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.SayHello = channel.unary_unary(
-        '/helloworld.Greeter/SayHello',
+    self.Login = channel.unary_unary(
+        '/helloworld.Greeter/Login',
         request_serializer=helloworld__pb2.HelloRequest.SerializeToString,
         response_deserializer=helloworld__pb2.HelloReply.FromString,
         )
-    self.SayHelloAgain = channel.unary_unary(
-        '/helloworld.Greeter/SayHelloAgain',
+    self.ChooseState = channel.unary_unary(
+        '/helloworld.Greeter/ChooseState',
         request_serializer=helloworld__pb2.HelloRequest.SerializeToString,
         response_deserializer=helloworld__pb2.HelloReply.FromString,
         )
@@ -30,14 +30,14 @@ class GreeterServicer(object):
   """The greeting service definition.
   """
 
-  def SayHello(self, request, context):
+  def Login(self, request, context):
     """Sends a greeting
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SayHelloAgain(self, request, context):
+  def ChooseState(self, request, context):
     """Sends another greeting
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -47,13 +47,13 @@ class GreeterServicer(object):
 
 def add_GreeterServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'SayHello': grpc.unary_unary_rpc_method_handler(
-          servicer.SayHello,
+      'Login': grpc.unary_unary_rpc_method_handler(
+          servicer.Login,
           request_deserializer=helloworld__pb2.HelloRequest.FromString,
           response_serializer=helloworld__pb2.HelloReply.SerializeToString,
       ),
-      'SayHelloAgain': grpc.unary_unary_rpc_method_handler(
-          servicer.SayHelloAgain,
+      'ChooseState': grpc.unary_unary_rpc_method_handler(
+          servicer.ChooseState,
           request_deserializer=helloworld__pb2.HelloRequest.FromString,
           response_serializer=helloworld__pb2.HelloReply.SerializeToString,
       ),

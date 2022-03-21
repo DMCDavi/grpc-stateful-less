@@ -23,11 +23,23 @@ import helloworld_pb2_grpc
 
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
-    def SayHello(self, request, context):
-        return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
+    token_list = []
 
-    def SayHelloAgain(self, request, context):
-    	return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
+    def Login(self, request, context):
+        user = input("Digite seu nome de usuario: ")
+        password = input("Digite sua senha: ")
+        auth_token = user + '_' + password
+        
+        print(Greeter.token_list)
+        print('Voce fez login com sucesso!')
+        session_res = input('Deseja salvar sua sessao? [y/n]')
+        if (session_res == 'y'):
+            Greeter.token_list.append(auth_token)
+
+        return 1
+
+    def ChooseState(self, request, context):
+    	return helloworld_pb2.HelloReply(message='Ola! Deseja salvar sua sessao? [y/n]')
 
 
 def serve():

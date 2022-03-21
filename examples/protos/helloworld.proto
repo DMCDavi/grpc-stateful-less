@@ -24,9 +24,9 @@ package helloworld;
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc Login (HelloRequest) returns (HelloReply) {}
   // Sends another greeting
-  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+  rpc ChooseState (HelloRequest) returns (HelloReply) {}
 }
 
 // The request message containing the user's name.
