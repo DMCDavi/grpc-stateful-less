@@ -24,9 +24,26 @@ package helloworld;
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc Login (HelloRequest) returns (HelloReply) {}
+  rpc Login (LoginRequest) returns (LoginReply) {}
   // Sends another greeting
-  rpc ChooseState (HelloRequest) returns (HelloReply) {}
+  rpc ChooseNumber (StateRequest) returns (HelloReply) {}
+}
+
+message LoginRequest {
+  string username = 1;
+  string password = 2;
+  bool is_stateful = 3;
+}
+
+message LoginReply {
+  string message = 1;
+  string auth_token = 2;
+}
+
+
+message StateRequest {
+  string auth_token = 1;
+  string number = 2;
 }
 
 // The request message containing the user's name.

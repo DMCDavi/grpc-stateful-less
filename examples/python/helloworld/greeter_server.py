@@ -20,26 +20,37 @@ import grpc
 import helloworld_pb2
 import helloworld_pb2_grpc
 
+user_states = []
 
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
-    token_list = []
-
     def Login(self, request, context):
-        user = input("Digite seu nome de usuario: ")
-        password = input("Digite sua senha: ")
-        auth_token = user + '_' + password
+        auth_token = request.username + '_' + request.password
         
-        print(Greeter.token_list)
-        print('Voce fez login com sucesso!')
-        session_res = input('Deseja salvar sua sessao? [y/n]')
-        if (session_res == 'y'):
-            Greeter.token_list.append(auth_token)
+        if(self.HasSession(auth_token)):
+            for state in user_states:
+                if(state['auth_token'] == auth_token):
+                    return helloworld_pb2.LoginReply(message='Você já tem uma sessão ativa, e seu número é ' + state['number'], auth_token=auth_token)
 
-        return 1
+        if (request.is_stateful):
+            user_states.append({'auth_token': auth_token})
 
-    def ChooseState(self, request, context):
-    	return helloworld_pb2.HelloReply(message='Ola! Deseja salvar sua sessao? [y/n]')
+        return helloworld_pb2.LoginReply(message='Você fez login com sucesso.', auth_token=auth_token)
+
+    def ChooseNumber(self, request, context):
+        for state in user_states:
+            if(state['auth_token'] == request.auth_token):
+                state['number'] = request.number
+                return helloworld_pb2.HelloReply(message='O número ' + request.number + ' foi salvo em sua sessão.')
+
+        return helloworld_pb2.HelloReply(message='Seu número é ' + request.number)
+
+    def HasSession(self, auth_token):
+        for state in user_states:
+            if(state['auth_token'] == auth_token):
+                return 1
+        return 0
+        
 
 
 def serve():

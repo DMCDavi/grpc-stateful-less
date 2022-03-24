@@ -21,6 +21,16 @@ import grpc
 import helloworld_pb2
 import helloworld_pb2_grpc
 
+def createLoginForm(stub):
+        username = input("Digite seu nome de usuario: ")
+        password = input("Digite sua senha: ")
+        is_stateful = input('Deseja salvar sua sessao? [y/n]')
+
+        return stub.Login(helloworld_pb2.LoginRequest(username=username, password=password, is_stateful=is_stateful=='y'))
+
+def createStateForm(stub, auth_token):
+        number = input("Por favor digite um número de 0 a 100: ")
+        return stub.ChooseNumber(helloworld_pb2.StateRequest(auth_token=auth_token, number=number))
 
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
@@ -28,9 +38,10 @@ def run():
     # of the code.
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = helloworld_pb2_grpc.GreeterStub(channel)
-        response1 = stub.Login(helloworld_pb2.HelloRequest())
-        state_response = stub.ChooseState(helloworld_pb2.HelloRequest(name='you'))
-        print("Greeter client received: " + response1.message, state_response)
+        login = createLoginForm(stub)
+        print(login.message)
+        state_response = createStateForm(stub, login.auth_token)
+        print(state_response.message)
 
 
 if __name__ == '__main__':
