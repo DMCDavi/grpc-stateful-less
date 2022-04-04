@@ -26,8 +26,6 @@ class Jogador:
 			self.soma += 10
 		else:
 			self.soma += carta
-		
-		self.verificaSoma()
 
 	def criarMao(self,baralho):
 		self.mao = []
@@ -47,39 +45,45 @@ class Jogador:
 	def verificaSoma(self):
 		if self.soma > 21:
 			self.jogando = False
-			
-			print("Você passou de 21 e perdeu, ruim")
+			return "Você passou de 21 e perdeu ;-;"
 			
 		elif self.soma == 21:
 			self.jogando = False
-			print("Parabéns, você tem 21 pontos! espere os outros jogadores")
+			return "Parabéns, você tem 21 pontos! espere os outros jogadores"
 			
 
 
 class VinteUm:
-    vez = 0
-    jogadores = []
-    baralho = []
-    endGame = False
-    def criarJogador(self, auth_token):
-        
-        jogador = Jogador(auth_token)
-        self.jogadores.append(jogador)
-        
-        return jogador
-    def criarBaralho(self):
-        self.baralho = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K",
+	jogadores = []
+	baralho = []
+	endGame = False
+	
+	def __init__(self) -> None:
+		super().__init__()
+		self.vez = 0
+		self.jogadores = []
+		self.baralho = []
+		self.endGame = False
+	
+	def criarJogador(self, auth_token):
+		jogador = Jogador(auth_token)
+		self.jogadores.append(jogador)
+		return jogador
+
+	def criarBaralho(self):
+		self.baralho = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K",
 				"A",2,3,4,5,6,7,8,9,10,"J","Q","K",
 				"A",2,3,4,5,6,7,8,9,10,"J","Q","K",
 				"A",2,3,4,5,6,7,8,9,10,"J","Q","K"]
-        random.shuffle(self.baralho)
-    def ganhou(self):
-        maior_soma = 0
-        vencedor = None
-        for j in self.jogadores:
-            if j.soma > maior_soma:
-                maior_soma = j.soma
-                vencedor = j
-        return vencedor
+		random.shuffle(self.baralho)
+
+	def ganhou(self):
+		maior_soma = 0
+		vencedor = None
+		for j in self.jogadores:
+			if j.soma > maior_soma:
+				maior_soma = j.soma
+				vencedor = j
+		return vencedor
 
 
