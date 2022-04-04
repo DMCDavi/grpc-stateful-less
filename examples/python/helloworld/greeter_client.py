@@ -26,22 +26,11 @@ import time
 def createLoginForm(stub):
         username = input("Digite seu login: ")
         password = input("Digite sua senha: ")
-       
-        
         return stub.Login(helloworld_pb2.LoginRequest(username=username, password=password))
 
-def dig(stub, auth_token):
-        
+def runTurn(stub, auth_token):
         extraCard = input("Deseja cavar mais uma carta? S/N: ")
-        
         return stub.TurnAction(helloworld_pb2.TurnRequest(auth_token=auth_token, dig = extraCard))
-        
-        
-        
-                
-                
-                        
-        #return stub.ChooseNumber(helloworld_pb2.StateRequest(auth_token=auth_token))
 
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
@@ -50,13 +39,17 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = helloworld_pb2_grpc.GreeterStub(channel)
         login = createLoginForm(stub)
-        #print(login.message)       
-        diga = dig(stub, login.auth_token)
-        while(diga.message == "True"):
-                diga = dig(stub, login.auth_token)        
+        print("Suas cartas são: ", login.message)
+        
+        while True:
+                turnResponse = runTurn(stub, login.auth_token)  
+                print("Suas cartas são: ", turnResponse.cards) 
+                if turnResponse.message:
+                        print(turnResponse.message)   
+                if turnResponse.playing == "False":
+                        break  
         winner = stub.VerifyTurn(helloworld_pb2.VerifyTurnRequest(auth_token=login.auth_token))
         print(winner.message)
-        #print(state_response.message)
 
 
 if __name__ == '__main__':
