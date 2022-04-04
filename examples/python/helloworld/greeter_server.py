@@ -14,12 +14,13 @@
 """The Python implementation of the GRPC helloworld.Greeter server."""
 
 from concurrent import futures
+from email import message
 import logging
 import time
 import grpc
 import helloworld_pb2
 import helloworld_pb2_grpc
-from vinte_um import VinteUm
+from vinte_um import Jogador, VinteUm
 #from vinte_um import Jogador, VinteUm
 game = None
 
@@ -42,11 +43,14 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
         global game
         
         jogador = self.VerifyAuth(request.auth_token)
+        print(jogador.mao)
         if(request.dig == "S" or request.dig == "s"):
             jogador.cavarCarta(game.baralho)
-        print(jogador.mao)
+        else:
+            jogador.jogando = False
         changeTurn()
-        return helloworld_pb2.HelloReply(message='ACABOU SEU TURNO')
+        
+        return helloworld_pb2.HelloReply(message=str(jogador.jogando))
     
     def VerifyAuth(self, auth_token):
         global game
@@ -59,7 +63,46 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
                 return jogador
         return None
  
+    def VerifyTurn(self,request, context):
+        
+        while(not game.endGame):
+            continue
+        message = self.ShowWinner()
+        return helloworld_pb2.HelloReply(message=message)
+    
+    def ShowWinner(self):
+        global game
+        jog = []
+        som = 0
+        for jogador in game.jogadores:
+            if(jogador.soma == som):
+                print(jogador.soma)
+                jog.append(jogador)
+                som = jogador.soma
+            elif(jogador.soma > som and jogador.soma <= 21):
+               
+                jog.clear()
+                
+                jog.append(jogador)
+                som = jogador.soma
+            
+        if(len(jog) == 1):
+            return ("Vencedor da partida é: "+jog[0].auth_token.split("_")[0])
+        else:
+            x = []
+            for i in jog:
+                x.append(i.auth_token.split("_")[0])  
+            return ("O jogo terminou em empate entre: " + str(x))                
+                     
 
+def VerifyWin():
+    global game
+    
+    for jogador in game.jogadores:
+        if(jogador.jogando):
+            return True
+    game.endGame = True
+    return False 
 
 def changeTurn():
     global game
@@ -68,7 +111,7 @@ def changeTurn():
         game.vez += 1
     else:
         game.vez = 0
-        
+    VerifyWin()        
         
 def createGame():
     global game

@@ -7,6 +7,7 @@ class Jogador:
 	soma = 0
 	jogando = True
 	turno = False
+	
 	def __init__(self, auth_token) -> None:
 		super().__init__()
 		self.auth_token = None
@@ -46,12 +47,12 @@ class Jogador:
 	def verificaSoma(self):
 		if self.soma > 21:
 			self.jogando = False
-			self.soma = 0
-			print("Você é burro e perdeu")
+			
+			print("Você passou de 21 e perdeu, ruim")
 			
 		elif self.soma == 21:
 			self.jogando = False
-			print("Você é burro e ganhou")
+			print("Parabéns, você tem 21 pontos! espere os outros jogadores")
 			
 
 
@@ -59,11 +60,12 @@ class VinteUm:
     vez = 0
     jogadores = []
     baralho = []
+    endGame = False
     def criarJogador(self, auth_token):
         
         jogador = Jogador(auth_token)
         self.jogadores.append(jogador)
-        print(jogador.auth_token)
+        
         return jogador
     def criarBaralho(self):
         self.baralho = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K",

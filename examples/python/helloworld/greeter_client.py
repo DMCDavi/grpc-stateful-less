@@ -50,10 +50,12 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = helloworld_pb2_grpc.GreeterStub(channel)
         login = createLoginForm(stub)
-        print(login.message)
-        while(True):
-                diga = dig(stub, login.auth_token)
-                stub.VerifyTurn(helloworld_pb2.VerifyTurnRequest(auth_token=login.auth_token))
+        #print(login.message)       
+        diga = dig(stub, login.auth_token)
+        while(diga.message == "True"):
+                diga = dig(stub, login.auth_token)        
+        winner = stub.VerifyTurn(helloworld_pb2.VerifyTurnRequest(auth_token=login.auth_token))
+        print(winner.message)
         #print(state_response.message)
 
 
