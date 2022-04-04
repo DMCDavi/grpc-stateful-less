@@ -3,7 +3,6 @@
 # source: helloworld.proto
 """Generated protocol buffer code."""
 from google.protobuf import descriptor as _descriptor
-from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
@@ -14,15 +13,238 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10helloworld.proto\x12\nhelloworld\"G\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x13\n\x0bis_stateful\x18\x03 \x01(\x08\"1\n\nLoginReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nauth_token\x18\x02 \x01(\t\"2\n\x0cStateRequest\x12\x12\n\nauth_token\x18\x01 \x01(\t\x12\x0e\n\x06number\x18\x02 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\x8a\x01\n\x07Greeter\x12;\n\x05Login\x12\x18.helloworld.LoginRequest\x1a\x16.helloworld.LoginReply\"\x00\x12\x42\n\x0c\x43hooseNumber\x12\x18.helloworld.StateRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+DESCRIPTOR = _descriptor.FileDescriptor(
+  name='helloworld.proto',
+  package='helloworld',
+  syntax='proto3',
+  serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
+  create_key=_descriptor._internal_create_key,
+  serialized_pb=b'\n\x10helloworld.proto\x12\nhelloworld\"2\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"1\n\nLoginReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nauth_token\x18\x02 \x01(\t\"\'\n\x11VerifyTurnRequest\x12\x12\n\nauth_token\x18\x01 \x01(\t\".\n\x0bTurnRequest\x12\x12\n\nauth_token\x18\x01 \x01(\t\x12\x0b\n\x03\x64ig\x18\x02 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\xce\x01\n\x07Greeter\x12;\n\x05Login\x12\x18.helloworld.LoginRequest\x1a\x16.helloworld.LoginReply\"\x00\x12?\n\nTurnAction\x12\x17.helloworld.TurnRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x45\n\nVerifyTurn\x12\x1d.helloworld.VerifyTurnRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+)
 
 
 
-_LOGINREQUEST = DESCRIPTOR.message_types_by_name['LoginRequest']
-_LOGINREPLY = DESCRIPTOR.message_types_by_name['LoginReply']
-_STATEREQUEST = DESCRIPTOR.message_types_by_name['StateRequest']
-_HELLOREQUEST = DESCRIPTOR.message_types_by_name['HelloRequest']
-_HELLOREPLY = DESCRIPTOR.message_types_by_name['HelloReply']
+
+_LOGINREQUEST = _descriptor.Descriptor(
+  name='LoginRequest',
+  full_name='helloworld.LoginRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='username', full_name='helloworld.LoginRequest.username', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='password', full_name='helloworld.LoginRequest.password', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=32,
+  serialized_end=82,
+)
+
+
+_LOGINREPLY = _descriptor.Descriptor(
+  name='LoginReply',
+  full_name='helloworld.LoginReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.LoginReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='auth_token', full_name='helloworld.LoginReply.auth_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=84,
+  serialized_end=133,
+)
+
+
+_VERIFYTURNREQUEST = _descriptor.Descriptor(
+  name='VerifyTurnRequest',
+  full_name='helloworld.VerifyTurnRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='auth_token', full_name='helloworld.VerifyTurnRequest.auth_token', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=135,
+  serialized_end=174,
+)
+
+
+_TURNREQUEST = _descriptor.Descriptor(
+  name='TurnRequest',
+  full_name='helloworld.TurnRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='auth_token', full_name='helloworld.TurnRequest.auth_token', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='dig', full_name='helloworld.TurnRequest.dig', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=176,
+  serialized_end=222,
+)
+
+
+_HELLOREQUEST = _descriptor.Descriptor(
+  name='HelloRequest',
+  full_name='helloworld.HelloRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='helloworld.HelloRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=224,
+  serialized_end=252,
+)
+
+
+_HELLOREPLY = _descriptor.Descriptor(
+  name='HelloReply',
+  full_name='helloworld.HelloReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.HelloReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=254,
+  serialized_end=283,
+)
+
+DESCRIPTOR.message_types_by_name['LoginRequest'] = _LOGINREQUEST
+DESCRIPTOR.message_types_by_name['LoginReply'] = _LOGINREPLY
+DESCRIPTOR.message_types_by_name['VerifyTurnRequest'] = _VERIFYTURNREQUEST
+DESCRIPTOR.message_types_by_name['TurnRequest'] = _TURNREQUEST
+DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
+DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
 LoginRequest = _reflection.GeneratedProtocolMessageType('LoginRequest', (_message.Message,), {
   'DESCRIPTOR' : _LOGINREQUEST,
   '__module__' : 'helloworld_pb2'
@@ -37,12 +259,19 @@ LoginReply = _reflection.GeneratedProtocolMessageType('LoginReply', (_message.Me
   })
 _sym_db.RegisterMessage(LoginReply)
 
-StateRequest = _reflection.GeneratedProtocolMessageType('StateRequest', (_message.Message,), {
-  'DESCRIPTOR' : _STATEREQUEST,
+VerifyTurnRequest = _reflection.GeneratedProtocolMessageType('VerifyTurnRequest', (_message.Message,), {
+  'DESCRIPTOR' : _VERIFYTURNREQUEST,
   '__module__' : 'helloworld_pb2'
-  # @@protoc_insertion_point(class_scope:helloworld.StateRequest)
+  # @@protoc_insertion_point(class_scope:helloworld.VerifyTurnRequest)
   })
-_sym_db.RegisterMessage(StateRequest)
+_sym_db.RegisterMessage(VerifyTurnRequest)
+
+TurnRequest = _reflection.GeneratedProtocolMessageType('TurnRequest', (_message.Message,), {
+  'DESCRIPTOR' : _TURNREQUEST,
+  '__module__' : 'helloworld_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.TurnRequest)
+  })
+_sym_db.RegisterMessage(TurnRequest)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
   'DESCRIPTOR' : _HELLOREQUEST,
@@ -58,21 +287,52 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
   })
 _sym_db.RegisterMessage(HelloReply)
 
-_GREETER = DESCRIPTOR.services_by_name['Greeter']
-if _descriptor._USE_C_DESCRIPTORS == False:
 
-  DESCRIPTOR._options = None
-  DESCRIPTOR._serialized_options = b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW'
-  _LOGINREQUEST._serialized_start=32
-  _LOGINREQUEST._serialized_end=103
-  _LOGINREPLY._serialized_start=105
-  _LOGINREPLY._serialized_end=154
-  _STATEREQUEST._serialized_start=156
-  _STATEREQUEST._serialized_end=206
-  _HELLOREQUEST._serialized_start=208
-  _HELLOREQUEST._serialized_end=236
-  _HELLOREPLY._serialized_start=238
-  _HELLOREPLY._serialized_end=267
-  _GREETER._serialized_start=270
-  _GREETER._serialized_end=408
+DESCRIPTOR._options = None
+
+_GREETER = _descriptor.ServiceDescriptor(
+  name='Greeter',
+  full_name='helloworld.Greeter',
+  file=DESCRIPTOR,
+  index=0,
+  serialized_options=None,
+  create_key=_descriptor._internal_create_key,
+  serialized_start=286,
+  serialized_end=492,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='Login',
+    full_name='helloworld.Greeter.Login',
+    index=0,
+    containing_service=None,
+    input_type=_LOGINREQUEST,
+    output_type=_LOGINREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='TurnAction',
+    full_name='helloworld.Greeter.TurnAction',
+    index=1,
+    containing_service=None,
+    input_type=_TURNREQUEST,
+    output_type=_HELLOREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='VerifyTurn',
+    full_name='helloworld.Greeter.VerifyTurn',
+    index=2,
+    containing_service=None,
+    input_type=_VERIFYTURNREQUEST,
+    output_type=_HELLOREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_GREETER)
+
+DESCRIPTOR.services_by_name['Greeter'] = _GREETER
+
 # @@protoc_insertion_point(module_scope)
