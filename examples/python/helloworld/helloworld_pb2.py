@@ -14,13 +14,13 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10helloworld.proto\x12\nhelloworld\"G\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x13\n\x0bis_stateful\x18\x03 \x01(\x08\"1\n\nLoginReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nauth_token\x18\x02 \x01(\t\"2\n\x0cStateRequest\x12\x12\n\nauth_token\x18\x01 \x01(\t\x12\x0e\n\x06number\x18\x02 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\x8a\x01\n\x07Greeter\x12;\n\x05Login\x12\x18.helloworld.LoginRequest\x1a\x16.helloworld.LoginReply\"\x00\x12\x42\n\x0c\x43hooseNumber\x12\x18.helloworld.StateRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10helloworld.proto\x12\nhelloworld\"G\n\x0cLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\x13\n\x0bis_stateful\x18\x03 \x01(\x08\"1\n\nLoginReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x12\n\nauth_token\x18\x02 \x01(\t\".\n\x0bTurnRequest\x12\x12\n\nauth_token\x18\x01 \x01(\t\x12\x0b\n\x03\x64ig\x18\x02 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\x87\x01\n\x07Greeter\x12;\n\x05Login\x12\x18.helloworld.LoginRequest\x1a\x16.helloworld.LoginReply\"\x00\x12?\n\nTurnAction\x12\x17.helloworld.TurnRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
 
 
 
 _LOGINREQUEST = DESCRIPTOR.message_types_by_name['LoginRequest']
 _LOGINREPLY = DESCRIPTOR.message_types_by_name['LoginReply']
-_STATEREQUEST = DESCRIPTOR.message_types_by_name['StateRequest']
+_TURNREQUEST = DESCRIPTOR.message_types_by_name['TurnRequest']
 _HELLOREQUEST = DESCRIPTOR.message_types_by_name['HelloRequest']
 _HELLOREPLY = DESCRIPTOR.message_types_by_name['HelloReply']
 LoginRequest = _reflection.GeneratedProtocolMessageType('LoginRequest', (_message.Message,), {
@@ -37,12 +37,12 @@ LoginReply = _reflection.GeneratedProtocolMessageType('LoginReply', (_message.Me
   })
 _sym_db.RegisterMessage(LoginReply)
 
-StateRequest = _reflection.GeneratedProtocolMessageType('StateRequest', (_message.Message,), {
-  'DESCRIPTOR' : _STATEREQUEST,
+TurnRequest = _reflection.GeneratedProtocolMessageType('TurnRequest', (_message.Message,), {
+  'DESCRIPTOR' : _TURNREQUEST,
   '__module__' : 'helloworld_pb2'
-  # @@protoc_insertion_point(class_scope:helloworld.StateRequest)
+  # @@protoc_insertion_point(class_scope:helloworld.TurnRequest)
   })
-_sym_db.RegisterMessage(StateRequest)
+_sym_db.RegisterMessage(TurnRequest)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
   'DESCRIPTOR' : _HELLOREQUEST,
@@ -67,12 +67,12 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _LOGINREQUEST._serialized_end=103
   _LOGINREPLY._serialized_start=105
   _LOGINREPLY._serialized_end=154
-  _STATEREQUEST._serialized_start=156
-  _STATEREQUEST._serialized_end=206
-  _HELLOREQUEST._serialized_start=208
-  _HELLOREQUEST._serialized_end=236
-  _HELLOREPLY._serialized_start=238
-  _HELLOREPLY._serialized_end=267
-  _GREETER._serialized_start=270
-  _GREETER._serialized_end=408
+  _TURNREQUEST._serialized_start=156
+  _TURNREQUEST._serialized_end=202
+  _HELLOREQUEST._serialized_start=204
+  _HELLOREQUEST._serialized_end=232
+  _HELLOREPLY._serialized_start=234
+  _HELLOREPLY._serialized_end=263
+  _GREETER._serialized_start=266
+  _GREETER._serialized_end=401
 # @@protoc_insertion_point(module_scope)

@@ -20,9 +20,9 @@ class GreeterStub(object):
                 request_serializer=helloworld__pb2.LoginRequest.SerializeToString,
                 response_deserializer=helloworld__pb2.LoginReply.FromString,
                 )
-        self.ChooseNumber = channel.unary_unary(
-                '/helloworld.Greeter/ChooseNumber',
-                request_serializer=helloworld__pb2.StateRequest.SerializeToString,
+        self.TurnAction = channel.unary_unary(
+                '/helloworld.Greeter/TurnAction',
+                request_serializer=helloworld__pb2.TurnRequest.SerializeToString,
                 response_deserializer=helloworld__pb2.HelloReply.FromString,
                 )
 
@@ -38,7 +38,7 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ChooseNumber(self, request, context):
+    def TurnAction(self, request, context):
         """Sends another greeting
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -53,9 +53,9 @@ def add_GreeterServicer_to_server(servicer, server):
                     request_deserializer=helloworld__pb2.LoginRequest.FromString,
                     response_serializer=helloworld__pb2.LoginReply.SerializeToString,
             ),
-            'ChooseNumber': grpc.unary_unary_rpc_method_handler(
-                    servicer.ChooseNumber,
-                    request_deserializer=helloworld__pb2.StateRequest.FromString,
+            'TurnAction': grpc.unary_unary_rpc_method_handler(
+                    servicer.TurnAction,
+                    request_deserializer=helloworld__pb2.TurnRequest.FromString,
                     response_serializer=helloworld__pb2.HelloReply.SerializeToString,
             ),
     }
@@ -87,7 +87,7 @@ class Greeter(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def ChooseNumber(request,
+    def TurnAction(request,
             target,
             options=(),
             channel_credentials=None,
@@ -97,8 +97,8 @@ class Greeter(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/ChooseNumber',
-            helloworld__pb2.StateRequest.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/TurnAction',
+            helloworld__pb2.TurnRequest.SerializeToString,
             helloworld__pb2.HelloReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

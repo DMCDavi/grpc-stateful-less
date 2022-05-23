@@ -26,7 +26,7 @@ service Greeter {
   // Sends a greeting
   rpc Login (LoginRequest) returns (LoginReply) {}
   // Sends another greeting
-  rpc ChooseNumber (StateRequest) returns (HelloReply) {}
+  rpc TurnAction (TurnRequest) returns (HelloReply) {}
 }
 
 message LoginRequest {
@@ -41,9 +41,9 @@ message LoginReply {
 }
 
 
-message StateRequest {
+message TurnRequest {
   string auth_token = 1;
-  string number = 2;
+  string dig = 2;
 }
 
 // The request message containing the user's name.

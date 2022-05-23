@@ -21,12 +21,12 @@ import helloworld_pb2
 import helloworld_pb2_grpc
 
 user_states = []
-
+print("app funciona")
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
     def Login(self, request, context):
         auth_token = request.username + '_' + request.password
-        
+        print("login funciona")
         if(self.HasSession(auth_token)):
             for state in user_states:
                 if(state['auth_token'] == auth_token):
