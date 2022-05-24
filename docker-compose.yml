@@ -11,7 +11,14 @@ services:
         command: python3 ./examples/python/helloworld/greeter_server.py #comando para executar   
         volumes: 
             - .:/usr/app #cria o container no disco
-
+  redis-compose:
+        image: redis
+        command: redis-server --requirepass davi --appendonly yes
+        hostname: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - .:/usr/app
 
 #para subir o compose <docker-compose up>
 
