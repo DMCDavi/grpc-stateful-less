@@ -26,18 +26,22 @@ service Greeter {
   // Sends a greeting
   rpc Login (LoginRequest) returns (LoginReply) {}
   // Sends another greeting
-  rpc TurnAction (TurnRequest) returns (HelloReply) {}
+
+  rpc TurnAction (TurnRequest) returns (TurnReply) {}
+  rpc VerifyTurn (VerifyTurnRequest) returns (HelloReply) {}
 }
 
 message LoginRequest {
   string username = 1;
   string password = 2;
-  bool is_stateful = 3;
 }
 
 message LoginReply {
   string message = 1;
   string auth_token = 2;
+}
+message VerifyTurnRequest {
+   string auth_token = 1;
 }
 
 
@@ -54,4 +58,10 @@ message HelloRequest {
 // The response message containing the greetings
 message HelloReply {
   string message = 1;
+}
+
+message TurnReply {
+  string playing = 1;
+  string cards = 2;
+  string message = 3;
 }
