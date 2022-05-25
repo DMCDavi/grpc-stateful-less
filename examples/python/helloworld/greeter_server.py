@@ -23,6 +23,9 @@ from vinte_um import Jogador, VinteUm
 game = None
 
 
+user_states = []
+print("app funciona")
+
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
     def Login(self, request, context):
@@ -33,6 +36,7 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
             createGame()
         player = game.criarJogador(auth_token)
         player.criarMao(game.baralho)
+
 
         return helloworld_pb2.LoginReply(message=str(player.mao), auth_token=auth_token)
 

@@ -10,9 +10,6 @@ from google.protobuf import symbol_database as _symbol_database
 
 _sym_db = _symbol_database.Default()
 
-
-
-
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='helloworld.proto',
   package='helloworld',
@@ -245,6 +242,7 @@ DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
+
 LoginRequest = _reflection.GeneratedProtocolMessageType('LoginRequest', (_message.Message,), {
   'DESCRIPTOR' : _LOGINREQUEST,
   '__module__' : 'helloworld_pb2'
@@ -258,6 +256,7 @@ LoginReply = _reflection.GeneratedProtocolMessageType('LoginReply', (_message.Me
   # @@protoc_insertion_point(class_scope:helloworld.LoginReply)
   })
 _sym_db.RegisterMessage(LoginReply)
+
 
 VerifyTurnRequest = _reflection.GeneratedProtocolMessageType('VerifyTurnRequest', (_message.Message,), {
   'DESCRIPTOR' : _VERIFYTURNREQUEST,
@@ -286,53 +285,5 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
   # @@protoc_insertion_point(class_scope:helloworld.HelloReply)
   })
 _sym_db.RegisterMessage(HelloReply)
-
-
-DESCRIPTOR._options = None
-
-_GREETER = _descriptor.ServiceDescriptor(
-  name='Greeter',
-  full_name='helloworld.Greeter',
-  file=DESCRIPTOR,
-  index=0,
-  serialized_options=None,
-  create_key=_descriptor._internal_create_key,
-  serialized_start=286,
-  serialized_end=492,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='Login',
-    full_name='helloworld.Greeter.Login',
-    index=0,
-    containing_service=None,
-    input_type=_LOGINREQUEST,
-    output_type=_LOGINREPLY,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='TurnAction',
-    full_name='helloworld.Greeter.TurnAction',
-    index=1,
-    containing_service=None,
-    input_type=_TURNREQUEST,
-    output_type=_HELLOREPLY,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-  _descriptor.MethodDescriptor(
-    name='VerifyTurn',
-    full_name='helloworld.Greeter.VerifyTurn',
-    index=2,
-    containing_service=None,
-    input_type=_VERIFYTURNREQUEST,
-    output_type=_HELLOREPLY,
-    serialized_options=None,
-    create_key=_descriptor._internal_create_key,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_GREETER)
-
-DESCRIPTOR.services_by_name['Greeter'] = _GREETER
 
 # @@protoc_insertion_point(module_scope)

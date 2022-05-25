@@ -1,0 +1,24 @@
+#especificar versão do composer(orquestrador de containers)
+version: "3"
+
+services: 
+    server: 
+        build:
+            context: .
+            dockerfile: dockerfile #especifica qual dockerfile vai ser usada
+        ports:
+            - "50051:50051"
+        command: python3 ./examples/python/helloworld/greeter_server.py #comando para executar   
+        volumes: 
+            - .:/usr/app #cria o container no disco
+  redis-compose:
+        image: redis
+        command: redis-server --requirepass davi --appendonly yes
+        hostname: redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - .:/usr/app
+
+#para subir o compose <docker-compose up>
+

@@ -26,6 +26,7 @@ service Greeter {
   // Sends a greeting
   rpc Login (LoginRequest) returns (LoginReply) {}
   // Sends another greeting
+
   rpc TurnAction (TurnRequest) returns (TurnReply) {}
   rpc VerifyTurn (VerifyTurnRequest) returns (HelloReply) {}
 }

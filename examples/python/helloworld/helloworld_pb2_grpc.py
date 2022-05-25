@@ -23,11 +23,13 @@ class GreeterStub(object):
         self.TurnAction = channel.unary_unary(
                 '/helloworld.Greeter/TurnAction',
                 request_serializer=helloworld__pb2.TurnRequest.SerializeToString,
+
                 response_deserializer=helloworld__pb2.HelloReply.FromString,
                 )
         self.VerifyTurn = channel.unary_unary(
                 '/helloworld.Greeter/VerifyTurn',
                 request_serializer=helloworld__pb2.VerifyTurnRequest.SerializeToString,
+
                 response_deserializer=helloworld__pb2.HelloReply.FromString,
                 )
 
@@ -67,11 +69,13 @@ def add_GreeterServicer_to_server(servicer, server):
             'TurnAction': grpc.unary_unary_rpc_method_handler(
                     servicer.TurnAction,
                     request_deserializer=helloworld__pb2.TurnRequest.FromString,
+
                     response_serializer=helloworld__pb2.HelloReply.SerializeToString,
             ),
             'VerifyTurn': grpc.unary_unary_rpc_method_handler(
                     servicer.VerifyTurn,
                     request_deserializer=helloworld__pb2.VerifyTurnRequest.FromString,
+
                     response_serializer=helloworld__pb2.HelloReply.SerializeToString,
             ),
     }
@@ -104,6 +108,7 @@ class Greeter(object):
 
     @staticmethod
     def TurnAction(request,
+
             target,
             options=(),
             channel_credentials=None,
@@ -121,6 +126,7 @@ class Greeter(object):
 
     @staticmethod
     def VerifyTurn(request,
+
             target,
             options=(),
             channel_credentials=None,
@@ -130,8 +136,10 @@ class Greeter(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
+
         return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/VerifyTurn',
             helloworld__pb2.VerifyTurnRequest.SerializeToString,
+
             helloworld__pb2.HelloReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

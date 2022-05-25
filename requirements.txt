@@ -4,3 +4,5 @@ cython>=0.29.8
 protobuf>=3.5.0.post1, < 4.0dev
 six>=1.10
 wheel>=0.29
+grpcio==1.42.0
+grpcio-tools==1.35.0
