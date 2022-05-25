@@ -35,7 +35,7 @@ def createLoginForm(stub):
 
         _redis.set('username', username)
         value = _redis.get('username') 
-        print(value)
+        print("variavel do redis:", value)
 
         return stub.Login(helloworld_pb2.LoginRequest(username=username, password=password))
 
