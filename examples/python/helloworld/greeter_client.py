@@ -22,10 +22,21 @@ import grpc
 import helloworld_pb2
 import helloworld_pb2_grpc
 import time
+import redis
 
 def createLoginForm(stub):
         username = input("Digite seu login: ")
         password = input("Digite sua senha: ")
+
+        _redis = redis.Redis(
+        host= 'localhost',
+        port= '6379',
+        password = 'davi')
+
+        _redis.set('username', username)
+        value = _redis.get('username') 
+        print(value)
+
         return stub.Login(helloworld_pb2.LoginRequest(username=username, password=password))
 
 def runTurn(stub, auth_token):
